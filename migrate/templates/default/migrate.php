@@ -1,6 +1,6 @@
 <?php echo '<?php'; ?>
 
-class <?php echo $this->_migrateName; ?> extends CDbMigration
+class <?php echo $this->_migrateName; ?> extends EDbMigration
 {
 	public function up()
 	{
