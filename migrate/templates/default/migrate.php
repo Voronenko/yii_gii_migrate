@@ -4,7 +4,7 @@ class <?php echo $this->_migrateName; ?> extends EDbMigration
 {
 	public function up()
 	{
-		$this->execute("<?php echo $this->code; ?>");
+		$this->execute("<?php echo addslashes ($this->code); ?>");
 		
 <?php if($this->clearCache):?>
 		if(Yii::app()->hasComponent('cache'))
