@@ -9,6 +9,7 @@ class MigrateCode extends CCodeModel
 {
 
 	public $migrateName;
+    public $alreadyAppliedCode;
 	public $code;
 	public $clearCache = true;
 	public $clearAssets = true;
@@ -20,7 +21,8 @@ class MigrateCode extends CCodeModel
 			array('migrateName', 'required'),
 			array('migrateName, _migrateName', 'match', 'pattern' => '/^\w+$/'),
 			array('clearCache, clearAssets', 'boolean'),
-			array('code','safe'),
+            array('code','safe'),
+			array('alreadyAppliedCode','safe'),
 		));
 	}
 
@@ -29,6 +31,7 @@ class MigrateCode extends CCodeModel
 		return array_merge(parent::attributeLabels(), array(
 			'migrateName' => 'Migrate Class Name',
 			'code'=>'SQL',
+            'alreadyAppliedCode' => 'Check if applied (if returns >= 1 records - mark as applied',
 			'clearCache' => 'Flush cache',
 			'clearAssets'=>'Clear assets',
 		));

@@ -4,8 +4,23 @@ class <?php echo $this->_migrateName; ?> extends EDbMigration
 {
 	public function up()
 	{
+
+        <?php if ($this->alreadyAppliedCode !=''):?>
+
+          $getcurrentdb = $this->getDbConnection()->createCommand("SELECT DATABASE( ) AS DBName")->queryScalar();
+
+          $command = $this->getDbConnection()->createCommand("<?php echo addslashes ($this->alreadyAppliedCode); ?>");
+          $command->bindParam(":CURRENTDB",$getcurrentdb,PDO::PARAM_STR);
+          if (!$command->queryRow()) {
+        <?php endif;?>
+
 		$this->execute("<?php echo addslashes ($this->code); ?>");
-		
+
+       <?php if ($this->alreadyAppliedCode !=''):?>
+           }
+       <?php endif;?>
+
+
 <?php if($this->clearCache):?>
 		if(Yii::app()->hasComponent('cache'))
 		{
