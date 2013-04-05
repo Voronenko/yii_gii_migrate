@@ -29,6 +29,7 @@ This extention can:
 <li>generate migration code;</li>
 <li>flush cache (checkbox);</li>
 <li>clear assets (checkbox).</li>
+<li>Mark as already applied by sql condition.</li>
 </ul>
 
 <i>Note: For flush cache and clear assets future you need to configure you console configuration to using assetManager and cache components.</i>
